@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Code runner</title>
+    <link rel="stylesheet" href="./css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <section class="runner-wrapper">
+      <div class="container">
+        <div class="runner-inner">
+          <div class="left-box">
+            <label for="html-id" class="textare-label-html"
+              ><i
+                class="fa-brands fa-html5"
+                style="color: rgb(230, 79, 79); font-size: 20px"
+              ></i>
+              HTML</label
+            >
+            <textarea
+              name="html"
+              id="html-id"
+              cols="30"
+              rows="11"
+              onkeyup="codeRunner()"
+            >
+            </textarea>
+            <label for="css-id" class="textare-label-css"
+              ><i
+                class="fa-brands fa-css3-alt"
+                style="color: rgb(51, 51, 255); font-size: 20px"
+              ></i>
+              CSS</label
+            >
+            <textarea
+              name="css"
+              id="css-id"
+              cols="30"
+              rows="11"
+              onkeyup="codeRunner()"
+            >
+            </textarea>
+            <label for="js-id" class="textare-label-js"
+              ><i
+                class="fa-brands fa-js"
+                style="color: yellow; font-size: 20px"
+              ></i>
+              JS</label
+            >
+            <textarea
+              name="js"
+              id="js-id"
+              cols="30"
+              rows="11"
+              onkeyup="codeRunner()"
+            >
+            </textarea>
+          </div>
+          <div class="right-box">
+            <label for="output" class="output-label"><i class="fa-solid fa-play"></i> Output</label>
+            <iframe id="output"></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      function codeRunner() {
+        const elHtml = document.getElementById("html-id").value;
+        const elCss = document.getElementById("css-id").value;
+        const elJs = document.getElementById("js-id").value;
+        const elOutput = document.getElementById("output");
+
+        elOutput.contentDocument.body.innerHTML = elHtml + "<style>" + elCss + "</style>"
+        elOutput.contentWindow.eval(elJs)
+      }
+    </script>
+  </body>
+</html>
